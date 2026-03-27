@@ -23,13 +23,17 @@ export default function BookMenu() {
     <div className="flex flex-col md:flex-row max-w-7xl mx-auto py-16 px-4 gap-12 bg-zinc-950 text-zinc-300">
       
       {/* Table of Contents Sidebar */}
-      <aside className="w-full md:w-1/4 h-fit sticky top-24 border-l border-amber-500/30 pl-6">
-        <h3 className="font-serif text-2xl text-amber-500 mb-6 tracking-widest uppercase">Chapters</h3>
-        <ul className="space-y-4">
-          {/* Use activeCategories here */}
+      <aside className="w-full md:w-1/4 h-fit md:sticky top-24 md:border-l border-amber-500/30 md:pl-6 z-20 bg-zinc-950 pb-6 md:pb-0">
+        <h3 className="hidden md:block font-serif text-2xl text-amber-500 mb-6 tracking-widest uppercase">Chapters</h3>
+        
+        {/* Mobile: Horizontal Scroll Row | Desktop: Vertical List */}
+        <ul className="flex flex-row md:flex-col gap-3 md:gap-0 md:space-y-4 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {activeCategories.map((cat) => (
-            <li key={cat}>
-              <a href={`#${cat.toLowerCase().replace(/\s+/g, '-')}`} className="hover:text-amber-400 transition-colors cursor-pointer text-lg tracking-wide">
+            <li key={cat} className="shrink-0">
+              <a 
+                href={`#${cat.toLowerCase().replace(/\s+/g, '-')}`} 
+                className="inline-block md:block px-5 py-2 md:px-0 md:py-0 border border-zinc-800 md:border-transparent rounded-full md:rounded-none hover:text-amber-400 hover:border-amber-400 transition-colors cursor-pointer text-sm md:text-lg tracking-wide"
+              >
                 {cat}
               </a>
             </li>
